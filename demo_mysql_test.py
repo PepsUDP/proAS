@@ -6,4 +6,11 @@ mydb = mysql.connector.connect(
     password="LMRyKb5ygYFGs32bg0W5"
 )
 
-print(mydb) #test commit2
+print(mydb)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("SHOW DATABASES")
+
+for x in mycursor:
+  print(x)
