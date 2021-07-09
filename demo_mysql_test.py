@@ -6,4 +6,4 @@ mydb = mysql.connector.connect(
     password="LMRyKb5ygYFGs32bg0W5"
 )
 
-print(mydb) #test commit
+print(mydb) #test commit2
