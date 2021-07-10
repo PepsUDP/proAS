@@ -1,6 +1,6 @@
 import socket, sys, json
 from typing import Counter
-from db_uci import dbuci
+from services.db_uci import dbuci
 from services.comunicacion import sendT, listenB, registerS
 srv = 'sgnup'
 

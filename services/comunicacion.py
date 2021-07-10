@@ -1,6 +1,6 @@
 import socket, sys, json
 from os import system, name
-from db_uci import dbuci
+from services.db_uci import dbuci
 
 #Armado y envío transacción
 def sendT(sckt, srv, arg):
