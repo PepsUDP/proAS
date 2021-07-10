@@ -38,6 +38,7 @@ def menuRgtrROL():
     rol = input(menu)
     if rol in ["1","2"]:
         username = menuRgtrUN()
+        clearS()
         password = menuRgtrPW()
         clearS()
     else:
@@ -45,6 +46,7 @@ def menuRgtrROL():
     menuConfirmar = f"""
     Registro de usuario
     Usuario: {username}
+    Contraseña: {password}
     Rol: {"Administrador" if rol == "1" else "General"}
     ¿Son estos datos correctos? [y/n]
     """
@@ -53,7 +55,7 @@ def menuRgtrROL():
     if yn == 'y':
         arg = {"username": username, "password": password, "rol": rol}
         print(arg)
-        sendT(sckt, json.dumps(arg), rgtr)
+        sendT(sckt, rgtr, json.dumps(arg))
         nS, msgT = listenB(sckt)
         print(msgT)
         msg = json.loads(msgT[2:])
