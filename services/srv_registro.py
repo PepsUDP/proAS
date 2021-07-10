@@ -1,7 +1,7 @@
 import socket, sys, json
 from typing import Counter
-from services.db_uci import dbuci
-from services.comunicacion import sendT, listenB, registerS
+from b_uci import dbuci
+from comunicacion import sendT, listenB, registerS
 srv = 'sgnup'
 
 #Registrar usuario
