@@ -25,7 +25,7 @@ def menuRgtrUN():
 def menuRgtrROL():
     rol = None
     username = None
-    password = None
+    #password = None
     clearS()
     menu = """
     Registro de usuario
@@ -38,7 +38,8 @@ def menuRgtrROL():
     rol = input(menu)
     if rol in ["1","2"]:
         username = menuRgtrUN()
-        password = menuRgtrPW()
+        #password = menuRgtrPW()
+        #clearS()
     else:
         return menuRgtrROL()
     menuConfirmar = f"""
@@ -50,7 +51,9 @@ def menuRgtrROL():
     clearS()
     yn = input(menuConfirmar)
     if yn == 'y':
-        arg = {"username": username, "password": password, "rol": rol}
+        #arg = {"username": username, "password": password, "rol": rol}
+        arg = {"usuario": username, "rol": rol}
+        print(arg)
         sendT(sckt, json.dumps(arg), rgtr)
         nS, msgT = listenB(sckt)
         print(msgT)
