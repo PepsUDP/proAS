@@ -1,6 +1,6 @@
 import socket, sys, json
 from os import system, name
-from clients.comunicacion import clearS, sendT, listenB
+from comunicacion import clearS, sendT, listenB
 rgtr = "sgnup"
 
 sesion = {"id": None, "username": None, "rol": None}
