@@ -45,7 +45,7 @@ if __name__ == "__main__":
             registerU(rgtr=json.loads(mT))
         else:
             response = {"respuesta":"servicio incorrecto"}
-            sendT(sckt, json.dumps(response), srv)
+            sendT(sckt, srv, json.dumps(response))
 
     print('Se cierra socket')
     sckt.close()
