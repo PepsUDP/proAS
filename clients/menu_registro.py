@@ -57,12 +57,11 @@ def menuRgtrROL():
         print(arg)
         sendT(sckt, rgtr, json.dumps(arg))
         nS, msgT = listenB(sckt)
-        #print(msgT)
+        print(msgT)
         msg = json.loads(msgT[2:])
         if nS == rgtr:
             if msg["respuesta"]:
                 print(msg["respuesta"])
-                print('test')
     else:
         menuRgtrROL()
 
