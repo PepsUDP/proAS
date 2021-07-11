@@ -56,16 +56,12 @@ def menuRgtrROL():
         arg = {"username": username, "password": password, "rol": rol}
         print(arg)
         sendT(sckt, rgtr, json.dumps(arg))
-        print('hola')
         nS, msgT = listenB(sckt)
-        print('chao')
         print(msgT)
         msg = json.loads(msgT[2:])
-        print('ala')
         if nS == rgtr:
             if msg["respuesta"]:
                 print(msg["respuesta"])
-        print('ola')
     else:
         menuRgtrROL()
 

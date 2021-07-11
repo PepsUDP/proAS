@@ -6,8 +6,9 @@ srv = 'sgnup'
 
 #Registrar usuario
 def registerU(rgtr):
-    cursor = dbuci.execute("SELECT username FROM users WHERE username = ?", (rgtr["username"],))
-    fetched = cursor.fetchone()
+    crsr = dbuci.cursor()
+    crsr = dbuci.execute("SELECT username FROM users WHERE username = ?", (rgtr["username"],))
+    fetched = crsr.fetchone()
     if fetched == None:
         if rgtr["rol"] in ["1","2"]:
             rol = "administrador" if rgtr["rol"] == "1" else "general"
