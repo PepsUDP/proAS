@@ -8,7 +8,7 @@ srv = 'sgnup'
 def registerU(rgtr):
     crsr = dbuci.cursor()
     print(rgtr)
-    crsr.execute("SELECT username FROM users WHERE username = ? AND password = ? AND rol = ?", (rgtr["username"],rgtr["password"], rgtr["rol"]))
+    crsr.execute("SELECT username FROM users WHERE username = %s", (rgtr["username"]))
     fetched = crsr.fetchone()
     if fetched == None:
         if rgtr["rol"] in ["1","2"]:
