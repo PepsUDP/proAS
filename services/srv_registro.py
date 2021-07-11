@@ -14,8 +14,8 @@ def registerU(rgtr):
     if fetched == None:
         if rgtr["rol"] in ["1","2"]:
             rol = "administrador" if rgtr["rol"] == "1" else "general"
-            dbuci.execute("INSERT INTO users (username, password, rol) VALUES(%s, %s, %s)", (rgtr["username"],rgtr["password"], rol))
-            dbuci.commit()
+            crsr.execute("INSERT INTO users (username, password, rol) VALUES(%s, %s, %s)", (rgtr["username"],rgtr["password"], rol))
+            crsr.commit()
             response = {"respuesta":"El usuario ha sido registrado exitosamente."}
             sendT(sckt, json.dumps(response), srv)
         else:
