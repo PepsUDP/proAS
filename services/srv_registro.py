@@ -7,8 +7,6 @@ srv = 'sgnup'
 #Registrar usuario
 def registerU(rgtr):
     crsr = dbuci.cursor()
-    print(rgtr)
-    print(rgtr["username"])
     crsr.execute("SELECT username FROM users WHERE username = %s", (rgtr["username"],))
     fetched = crsr.fetchone()
     if fetched == None:
