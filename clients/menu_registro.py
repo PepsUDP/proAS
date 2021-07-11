@@ -62,6 +62,7 @@ def menuRgtrROL():
         if nS == rgtr:
             if msg["respuesta"]:
                 print(msg["respuesta"])
+                print('test')
     else:
         menuRgtrROL()
 
