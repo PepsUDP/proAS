@@ -17,13 +17,13 @@ def registerU(rgtr):
             crsr.execute("INSERT INTO users (username, password, rol) VALUES(%s, %s, %s)", (rgtr["username"],rgtr["password"], rgtr["rol"]))
             dbuci.commit()
             response = {"respuesta":"El usuario ha sido registrado exitosamente."}
-            sendT(sckt, json.dumps(response), srv)
+            sendT(sckt, srv, json.dumps(response))
         else:
             response = {"respuesta":"No se ha podido registrar al usuario."}
-            sendT(sckt, json.dumps(response), srv)
+            sendT(sckt, srv, json.dumps(response))
     else:
         response = {"respuesta":"El usuario introducido ya se encuentra registrado."}
-        sendT(sckt, json.dumps(response), srv)
+        sendT(sckt, srv, json.dumps(response))
 
 if __name__ == "__main__":
     try:
