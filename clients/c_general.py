@@ -163,10 +163,8 @@ def menuGD():
     Opción: """
     opcion = int(input(menuGD))
     arg = {"opcion": opcion}
-    print(arg)
     sendT(sckt, gtdb, json.dumps(arg))
     nS, msgT = listenB(sckt)
-    print(msgT)
     msg = msgT[12:]
     if nS == gtdb:
         if msg:
