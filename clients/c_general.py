@@ -142,7 +142,7 @@ def menuLI():
                 print("menuGD()")
             else:
                 menuLI()
-'''
+
 def menuGD():
     menuGD = """
     ***************************************
@@ -163,28 +163,16 @@ def menuGD():
     
     Opción: """
     opcion = int(input(menuGD))
-    fetched = None
-    crsr = dbuci.cursor()
-    if opcion == 1:
-        crsr.execute("SELECT * FROM pasillo;")   
-        fetched = crsr.fetchall()
-    elif opcion == 2:
-        crsr.execute("SELECT * FROM sala;")
-        fetched = crsr.fetchall()     
-    elif opcion == 3:
-        crsr.execute("SELECT * FROM equipoMedico WHERE tipo=cama;")   
-        fetched = crsr.fetchall() 
-    elif opcion == 4:
-        crsr.execute("SELECT * FROM paciente;") 
-        fetched = crsr.fetchall()
-    elif opcion == 5:
-        crsr.execute("SELECT * FROM personalMedico;")
-        fetched = crsr.fetchall()
-    elif opcion == 6:    
-        crsr.execute("SELECT * FROM equipoMedico WHERE tipo=respirador;")
-        fetched = crsr.fetchall()
-    print(fetched)
-'''
+    arg = {"opcion": opcion}
+    print(arg)
+    sendT(sckt, ccddb, json.dumps(arg))
+    nS, msgT = listenB(sckt)
+    print(msgT)
+    msg = json.loads(msgT[12:])
+    print(msg)
+    if nS == gtdb:
+        if msg["respuesta"]:
+            print(msg["respuesta"])
 
 if __name__ == "__main__":
     try:
