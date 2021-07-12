@@ -44,7 +44,7 @@ if __name__ == "__main__":
         quit()
 
     registerS(sckt, srv)
-
+    
     while True:
         nS, mT = listenB(sckt)
         print(nS, mT)
