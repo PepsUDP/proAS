@@ -1,7 +1,7 @@
 import socket, json
 from os import system, name
 from comunicacion import clearS, sendT, listenB
-from db_uci import dbuci
+# from db_uci import dbuci
 rgtr = "ccdsu"  # Registro
 lgin = "ccdli"  # Ingreso
 gtdb = "ccddb"  # Consultar datos
@@ -139,10 +139,10 @@ def menuLI():
             if sesion["rol"] == 2:
                 # Menu cliente
                 #print("menuCliente()")
-                menuGD()
+                print("menuGD()")
             else:
                 menuLI()
-
+'''
 def menuGD():
     menuGD = """
     ***************************************
@@ -157,6 +157,8 @@ def menuGD():
     * 4) Pacientes                        *
     * 5) Personal Médico                  *
     * 6) Respiradores                     *
+    *                                     *
+    * 7) Cerrar sesión                    *
     ***************************************
     
     Opción: """
@@ -182,6 +184,7 @@ def menuGD():
         crsr.execute("SELECT * FROM equipoMedico WHERE tipo=respirador;")
         fetched = crsr.fetchall()
     print(fetched)
+'''
 
 if __name__ == "__main__":
     try:
