@@ -14,7 +14,6 @@ class create_dict(dict):
 def getData(opcion):
     mydict = create_dict()
     crsr = dbuci.cursor()
-    print(opcion)
     fetched = None
     if opcion == 1:
         crsr.execute("SELECT * FROM pasillo;")   
@@ -30,7 +29,6 @@ def getData(opcion):
         crsr.execute("SELECT * FROM equipoMedico WHERE tipo='cama';")   
         fetched = crsr.fetchall()
         for row in fetched:
-            print(fetched)
             mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":str(row[3]),"tiempoUso":row[4],"estado":row[5]}))
     elif opcion == 4:
         crsr.execute("SELECT * FROM paciente;") 
@@ -49,7 +47,6 @@ def getData(opcion):
             mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":str(row[3]),"tiempoUso":row[4],"estado":row[5]}))
     if fetched:
         response = json.dumps(mydict, indent=2, sort_keys=True)
-        print(response)
         #test = '{' + response[1:-1] + '}'
         #print(test)
         #response = {"respuesta":fetched}
@@ -72,7 +69,6 @@ if __name__ == "__main__":
 
     while True:
         nS, mT = listenB(sckt)
-        print(mT)
         msg = json.loads(mT)
         if nS == srv:
             getData(opcion=msg["opcion"])
