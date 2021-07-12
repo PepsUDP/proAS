@@ -138,3 +138,16 @@ def menuLI():
                 print("menuCliente()")
             else:
                 menuLI()
+
+if __name__ == "__main__":
+    try:
+        sckt = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+        server_address = ('localhost', 5000)
+        print('Cliente: Conectandose a {} puerto {}'.format(*server_address))
+        sckt.connect(server_address)
+    except: 
+        print('No es posible la conexión al bus')
+        quit()
+
+    menuSULI()
