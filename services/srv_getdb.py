@@ -6,6 +6,7 @@ srv = 'ccddb'
 # Obtener datos
 def getData(opcion):
     crsr = dbuci.cursor()
+    print(opcion)
     fetched = None
     if opcion == 1:
         crsr.execute("SELECT * FROM pasillo;")   
