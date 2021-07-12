@@ -2,7 +2,7 @@ import socket, json
 from os import system, name
 from comunicacion import clearS, sendT, listenB
 from db_uci import dbuci
-rgtr = "sgnup"  # Registro
+rgtr = "ccdsu"  # Registro
 lgin = "ccdli"  # Ingreso
 gtdb = "ccddb"  # Consultar datos
 
@@ -76,7 +76,7 @@ def menuSU():
     clearS()
     yn = input(menuYN)
     if yn == 'y':
-        arg = {"username": username, "password": password, "rol": 2}
+        arg = {"username": username, "password": password, "rol": "2"}
         print(arg)
         sendT(sckt, rgtr, json.dumps(arg))
         nS, msgT = listenB(sckt)
