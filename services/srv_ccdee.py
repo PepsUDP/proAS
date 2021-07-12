@@ -22,9 +22,9 @@ def eliE(opcion, rgtr):
     elif opcion == 3:
         print(rgtr)
         crsr.execute("DELETE FROM personalLimpieza WHERE RUT = %s", (rgtr,))
-        crsr.execute("DELETE FROM aseo WHERE personalL_rut = %s", (rgtr,))
-        crsr.execute("DELETE FROM limpieza WHERE personalL_rut = %s", (rgtr,))
-        crsr.execute("DELETE FROM sanitizacion WHERE personalL_rut = %s", (rgtr,))
+        #crsr.execute("DELETE FROM aseo WHERE personalL_rut = %s", (rgtr,))
+        #crsr.execute("DELETE FROM limpieza WHERE personalL_rut = %s", (rgtr,))
+        #crsr.execute("DELETE FROM sanitizacion WHERE personalL_rut = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"El empleado de limpieza ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
