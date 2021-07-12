@@ -31,7 +31,12 @@ if __name__ == "__main__":
         print(nS, mT)
         print(mT)
         if nS == srv:
-            addE(rgtr=json.loads(mT))
+            print(json.loads(mT))
+            print(mT["opcion"])
+            print(mT["estado"])
+            if mT["opcion"] == 1:
+                print("hola")
+                #addE(rgtr=json.loads(mT))
         else:
             response = {"respuesta":"servicio incorrecto"}
             sendT(sckt, srv, json.dumps(response))
