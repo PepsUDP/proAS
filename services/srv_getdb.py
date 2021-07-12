@@ -36,7 +36,7 @@ def getData(opcion):
         test = '{' + response[1:-1] + '}'
         print(test)
         #response = {"respuesta":fetched}
-        sendT(sckt, srv, str(fetched))
+        sendT(sckt, srv, str(test))
     else:
         print("No sacó nada")
 
