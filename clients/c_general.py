@@ -117,7 +117,7 @@ def menuLI():
     clearS()
     password = input(menuPW)
 
-    arg = {"username": username, "password": password}
+    arg = {"username": username, "password": password, "rol": "2"}
     #arg = {"username": username, "password": password, "rol": rol}
     print(arg)
     sendT(sckt, lgin, json.dumps(arg))
