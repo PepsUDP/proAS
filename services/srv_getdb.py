@@ -29,7 +29,7 @@ def getData(opcion):
     if fetched:
         print(fetched)
         print(type(fetched))
-        response = json.dumps(fetched)
+        response = {json.dumps(fetched)}
         print(response)
         print(type(response))
         #response = {"respuesta":fetched}
