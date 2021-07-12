@@ -27,8 +27,9 @@ def getData(opcion):
         crsr.execute("SELECT * FROM equipoMedico WHERE tipo=respirador;")
         fetched = crsr.fetchall()
     if fetched:
-        response = {"respuesta":fetched}
-        sendT(sckt, srv, json.loads(response))
+        print(fetched)
+        #response = {"respuesta":fetched}
+        #sendT(sckt, srv, json.loads(response))
     else:
         print("No sacó nada")
 
