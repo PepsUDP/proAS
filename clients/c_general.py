@@ -171,8 +171,8 @@ def menuGD():
             print(msg)
 
             enter = input("Presione enter para continuar. ")
-            if enter:
-                menuGD()
+            clearS()
+            menuGD()
 
 if __name__ == "__main__":
     try:
