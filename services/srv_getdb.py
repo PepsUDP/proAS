@@ -47,7 +47,7 @@ if __name__ == "__main__":
         nS, mT = listenB(sckt)
         print(nS, mT)
         if nS == srv:
-            getData(rgtr=json.loads(mT))
+            getData(opcion=json.loads(mT))
         else:
             response = {"respuesta":"servicio incorrecto"}
             sendT(sckt, srv, json.dumps(response))
