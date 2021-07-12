@@ -4,6 +4,7 @@ from comunicacion import clearS, sendT, listenB
 rgtr = "ccdsu"  # Registro
 lgin = "ccdli"  # Ingreso
 aden = "ccdae"  # Agregar entidad
+elen = "ccdee"  # Eliminar entidad
 gtdb = "ccddb"  # Consultar datos
 
 sesion = {"username":None,"password":None,"rol":None}
@@ -175,41 +176,6 @@ def menuCRUD():
     elif opcion == 5:
         menuGD()
 
-def menuGD():
-    menuGD2 = """
-    ***************************************
-    * Usuario administrador               *
-    *-------------------------------------*
-    * Consultar datos                     *
-    * Elija una opción                    *
-    *-------------------------------------*
-    * 1) Pasillos                         *
-    * 2) Piezas                           *
-    * 3) Camas                            *
-    * 4) Pacientes                        *
-    * 5) Personal Médico                  *
-    * 6) Respiradores                     *
-    *                                     *
-    * 7) Cerrar sesión                    *
-    ***************************************
-    
-    Opción: """
-    opcion = int(input(menuGD2))
-    if opcion == 7:
-        menuSULI()
-    else:
-        arg = {"opcion": opcion}
-        sendT(sckt, gtdb, json.dumps(arg))
-        nS, msgT = listenB(sckt)
-        msg = msgT[12:]
-        if nS == gtdb:
-            if msg:
-                print(msg)
-
-                enter = input("Presione enter para continuar. ")
-                clearS()
-                menuGD()
-
 def menuAE():
     clearS()
     menuAE2 = """
@@ -287,6 +253,96 @@ def menuAE():
                 enter = input("Presione enter para continuar. ")
                 clearS()
                 menuAE()
+
+def menuEE():
+    clearS()
+    menuEE2 = """
+    ***************************************
+    * Usuario administrador               *
+    *-------------------------------------*
+    * Eliminar entidad                     *
+    * Elija una opción                    *
+    *-------------------------------------*
+    * 1) Pasillos                         *
+    * 2) Piezas                           *
+    * 3) Personal Limpieza                *
+    * 4) Pacientes                        *
+    * 5) Personal Médico                  *
+    * 6) Equipo Médico                    *
+    *                                     *
+    * 7) Cerrar sesión                    *
+    ***************************************
+
+    Opción: """
+    opcion = int(input(menuEE2))
+    if opcion == 7:
+        menuSULI()
+    else:
+        list = []
+        inpt = None
+        if opcion == 1:
+            inpt = input("ID del pasillo que se desea eliminar: ")
+            arg = {"opcion": opcion, "id_pasillo": inpt}
+        elif opcion == 2:
+            inpt = input("ID de la pieza que se desea eliminar: ")
+            arg = {"opcion": opcion, "id_sala": inpt}
+        elif opcion == 3:
+            inpt = input("RUT del empleado de limpieza que se desea eliminar: ")
+            arg = {"opcion": opcion, "RUT": inpt}
+        elif opcion == 4:
+            inpt = input("RUT del paciente que se desea eliminar: ")
+            arg = {"opcion": opcion, "RUT": inpt}
+        elif opcion == 5:
+            inpt = input("RUT del medico que se desea eliminar: ")
+            arg = {"opcion": opcion, "RUT": inpt}
+        elif opcion == 6:
+            inpt = input("ID de la herramienta medica que se desea eliminar: ")
+            em=["ID del Equipo Médico que desea eliminar"]
+            arg = {"opcion": opcion, "id_equipoMedico": inpt}
+        sendT(sckt, elen, json.dumps(arg))
+        nS, msgT = listenB(sckt)
+        msg = msgT[12:]
+        if nS == elen:
+            if msg:
+                print(msg)
+                enter = input("Presione enter para continuar. ")
+                clearS()
+                menuEE()
+
+def menuGD():
+    menuGD2 = """
+    ***************************************
+    * Usuario administrador               *
+    *-------------------------------------*
+    * Consultar datos                     *
+    * Elija una opción                    *
+    *-------------------------------------*
+    * 1) Pasillos                         *
+    * 2) Piezas                           *
+    * 3) Camas                            *
+    * 4) Pacientes                        *
+    * 5) Personal Médico                  *
+    * 6) Respiradores                     *
+    *                                     *
+    * 7) Cerrar sesión                    *
+    ***************************************
+    
+    Opción: """
+    opcion = int(input(menuGD2))
+    if opcion == 7:
+        menuSULI()
+    else:
+        arg = {"opcion": opcion}
+        sendT(sckt, gtdb, json.dumps(arg))
+        nS, msgT = listenB(sckt)
+        msg = msgT[12:]
+        if nS == gtdb:
+            if msg:
+                print(msg)
+
+                enter = input("Presione enter para continuar. ")
+                clearS()
+                menuGD()
 
 if __name__ == "__main__":
     try:
