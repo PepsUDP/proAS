@@ -167,7 +167,7 @@ def menuGD():
     sendT(sckt, gtdb, json.dumps(arg))
     nS, msgT = listenB(sckt)
     print(msgT)
-    msg = json.loads(msgT[12:])
+    msg = msgT[12:]
     if nS == gtdb:
         if msg:
             print(msg)
