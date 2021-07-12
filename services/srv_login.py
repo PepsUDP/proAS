@@ -12,7 +12,7 @@ def loginU(login):
     fetched = crsr.fetchone()
     if fetched:
         print(fetched)
-        response = {"respuesta":{"username":fetched[1],"rol":fetched[3]}}
+        response = {"respuesta":{"username":fetched[1],"password":fetched[2],"rol":fetched[3]}}
         sendT(sckt, srv, json.dumps(response))
     else:
         response = {"respuesta":"No es posible entrar con el usuario ingresado."}
