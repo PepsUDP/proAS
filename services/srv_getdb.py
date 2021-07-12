@@ -33,7 +33,7 @@ def getData(opcion):
         response = json.dumps(fetched)
         print(response)
         print(type(response))
-        test = response[2:]
+        test = '{' + response[1:-1] + '}'
         print(test)
         #response = {"respuesta":fetched}
         sendT(sckt, srv, str(fetched))
