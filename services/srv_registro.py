@@ -2,7 +2,7 @@ import socket, sys, json
 from typing import Counter
 from db_uci import dbuci
 from comunicacion import sendT, listenB, registerS
-srv = 'sgnup'
+srv = 'ccdsu'
 
 #Registrar usuario
 def registerU(rgtr):

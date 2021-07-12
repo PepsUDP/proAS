@@ -1,11 +1,11 @@
-import socket, sys, json
+import socket, json
 from os import system, name
 from comunicacion import clearS, sendT, listenB
-rgtr = "sgnup"  #Registro
-lgin = "ccdli" #Ingreso
+rgtr = "sgnup"  # Registro
+lgin = "ccdli"  # Ingreso
 
 sesion = {"username":None,"password":None,"rol":None}
-sock = None
+sckt = None
 
 def menuSULI():
     clearS()
@@ -137,8 +137,9 @@ def menuLI():
                 # Menu cliente
                 print("menuCliente()")
             else:
-                print("entre a un else")
-                #menuIngresar()
+                menuLI()
+
+
 
 if __name__ == "__main__":
     try:

@@ -6,12 +6,3 @@ dbuci = mysql.connector.connect(
     password="LMRyKb5ygYFGs32bg0W5",
     database="btayogimwuf6ppd8dtgu"
 )
-
-#print(dbuci)
-
-#mycursor = dbuci.cursor()
-
-#mycursor.execute("SHOW TABLES")
-
-#for x in mycursor:
-#  print(x)
