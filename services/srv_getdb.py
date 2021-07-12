@@ -47,12 +47,8 @@ def getData(opcion):
         for row in fetched:
             mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":row[3],"tiempoUso":row[4],"estado":row[5]}))
     if fetched:
-        print(fetched)
-        print(type(fetched))
-
         response = json.dumps(mydict, indent=2, sort_keys=True)
         print(response)
-        print(type(response))
         #test = '{' + response[1:-1] + '}'
         #print(test)
         #response = {"respuesta":fetched}
