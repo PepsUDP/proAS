@@ -13,7 +13,7 @@ def addE(opcion, rgtr):
         response = {"respuesta":"El pasillo ha sido ingresado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 2:
-        crsr.execute("INSERT INTO sala (cantCamas, camasDisp, estado) VALUES (%s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2]))
+        crsr.execute("INSERT INTO sala (cantCamas, camasDisp, estado) VALUES (%s, %s, %s)", (rgtr[0], rgtr[0], rgtr[1]))
         dbuci.commit()
         response = {"respuesta":"La pieza ha sido ingresada exitosamente."}
         sendT(sckt, srv, json.dumps(response))
@@ -44,7 +44,6 @@ if __name__ == "__main__":
                 addE(opcion = mTloads["opcion"], rgtr = l)
             elif mTloads["opcion"] == 2:
                 l.append(mTloads["cantCamas"])
-                l.append(mTloads["camasDisp"])
                 l.append(mTloads["estado"])
                 addE(opcion = mTloads["opcion"], rgtr = l)
         else:
