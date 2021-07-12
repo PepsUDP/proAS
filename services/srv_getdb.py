@@ -48,7 +48,7 @@ if __name__ == "__main__":
     while True:
         nS, mT = listenB(sckt)
         print(nS, mT)
-        msg = json.loads(mT[12:])
+        msg = json.loads(mT)
         print("msg", msg)
         print("msg:opcion",msg["opcion"])
         if nS == srv:
