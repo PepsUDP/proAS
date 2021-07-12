@@ -50,12 +50,12 @@ if __name__ == "__main__":
                 l.append(mTloads["estado"])
                 addE(opcion = mTloads["opcion"], rgtr = l)
             elif mTloads["opcion"] == 2:
-                l.append(mTLoads["id_sala"])
+                l.append(mTloads["id_sala"])
                 l.append(mTloads["cantCamas"])
                 l.append(mTloads["estado"])
                 addE(opcion = mTloads["opcion"], rgtr = l)
             elif mTloads["opcion"] == 3:
-                l.append(mTLoads["RUT"])
+                l.append(mTloads["RUT"])
                 l.append(mTloads["nombre"])
                 l.append(mTloads["fechaNac"])
                 l.append(mTloads["disponible"])
