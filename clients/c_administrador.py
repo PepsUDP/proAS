@@ -136,7 +136,8 @@ def menuLI():
             print(sesion)
             if sesion["rol"] == 2:
                 # Menu cliente
-                print("menuCliente()")
+                #print("menuCliente()")
+                menuAE()
             else:
                 menuLI()
 
