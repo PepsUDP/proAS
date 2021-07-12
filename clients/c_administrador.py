@@ -4,6 +4,7 @@ from comunicacion import clearS, sendT, listenB
 rgtr = "ccdsu"  # Registro
 lgin = "ccdli"  # Ingreso
 aden = "ccdae"  # Agregar entidad
+gtdb = "ccddb"  # Consultar datos
 
 sesion = {"username":None,"password":None,"rol":None}
 sckt = None
@@ -140,6 +141,74 @@ def menuLI():
                 menuAE()
             else:
                 menuLI()
+
+def menuCRUD():
+    clearS()
+    menuCRUD2 = """
+    ***************************************
+    * Usuario administrador               *
+    *-------------------------------------*
+    * Menu                                *
+    * Elija una opción                    *
+    *-------------------------------------*
+    * 1) Agregar entidad                  *
+    * 2) Eliminar entidad                 *
+    * 3) Asignar equipo a paciente        *
+    * 4) Asignar medico a paciente        *
+    * 5) Consultar datos                  *
+    *                                     *
+    * 6) Cerrar sesión                    *
+    ***************************************
+    
+    Opción: """
+    opcion = int(input(menuCRUD2))
+    if opcion == 6:
+        menuSULI()
+    elif opcion == 1:
+        menuAE()
+    elif opcion == 2:
+        print("2")
+    elif opcion == 3:
+        print("3")
+    elif opcion == 4:
+        print("4")
+    elif opcion == 5:
+        menuGD()
+
+def menuGD():
+    menuGD2 = """
+    ***************************************
+    * Usuario administrador               *
+    *-------------------------------------*
+    * Consultar datos                     *
+    * Elija una opción                    *
+    *-------------------------------------*
+    * 1) Pasillos                         *
+    * 2) Piezas                           *
+    * 3) Camas                            *
+    * 4) Pacientes                        *
+    * 5) Personal Médico                  *
+    * 6) Respiradores                     *
+    *                                     *
+    * 7) Cerrar sesión                    *
+    ***************************************
+    
+    Opción: """
+    opcion = int(input(menuGD2))
+    if opcion == 7:
+        menuSULI()
+    else:
+        arg = {"opcion": opcion}
+        sendT(sckt, gtdb, json.dumps(arg))
+        nS, msgT = listenB(sckt)
+        msg = msgT[12:]
+        if nS == gtdb:
+            if msg:
+                print(msg)
+
+                enter = input("Presione enter para continuar. ")
+                clearS()
+                menuGD()
 
 def menuAE():
     clearS()
