@@ -30,8 +30,7 @@ def getData(opcion):
         crsr.execute("SELECT * FROM equipoMedico WHERE tipo='cama';")   
         fetched = crsr.fetchall()
         for row in fetched:
-            mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":row[3],"tiempoUso":row[4],"estado":row[5]}))
-            print(row[3])
+            mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":str(row[3]),"tiempoUso":row[4],"estado":row[5]}))
     elif opcion == 4:
         crsr.execute("SELECT * FROM paciente;") 
         fetched = crsr.fetchall()
@@ -41,12 +40,12 @@ def getData(opcion):
         crsr.execute("SELECT * FROM personalMedico;")
         fetched = crsr.fetchall()
         for row in fetched:
-            mydict.add(row[0],({"nombre":row[1],"fechanac":row[2],"especialidad":row[3],"disponible":row[4]}))
+            mydict.add(row[0],({"nombre":row[1],"fechanac":str(row[2]),"especialidad":row[3],"disponible":row[4]}))
     elif opcion == 6:    
         crsr.execute("SELECT * FROM equipoMedico WHERE tipo='respirador';")
         fetched = crsr.fetchall()
         for row in fetched:
-            mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":row[3],"tiempoUso":row[4],"estado":row[5]}))
+            mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":str(row[3]),"tiempoUso":row[4],"estado":row[5]}))
     if fetched:
         response = json.dumps(mydict, indent=2, sort_keys=True)
         print(response)

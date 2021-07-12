@@ -143,7 +143,7 @@ def menuLI():
                 menuLI()
 
 def menuGD():
-    menuGD = """
+    menuGD2 = """
     ***************************************
     * Usuario general                     *
     *-------------------------------------*
@@ -161,7 +161,7 @@ def menuGD():
     ***************************************
     
     Opción: """
-    opcion = int(input(menuGD))
+    opcion = int(input(menuGD2))
     arg = {"opcion": opcion}
     sendT(sckt, gtdb, json.dumps(arg))
     nS, msgT = listenB(sckt)
@@ -169,6 +169,10 @@ def menuGD():
     if nS == gtdb:
         if msg:
             print(msg)
+
+            enter = input("Presione enter para continuar. ")
+            if enter:
+                menuGD()
 
 if __name__ == "__main__":
     try:
