@@ -24,6 +24,24 @@ def addE(opcion, rgtr):
         dbuci.commit()
         response = {"respuesta":"El empleado de limpieza ha sido ingresado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
+    elif opcion == 4:
+        print(rgtr)
+        crsr.execute("INSERT INTO paciente (RUT, nombre, fechanac, edad, enfermedad, sintomas, dieta, alergias, medicamentos, tratamiento) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2], rgtr[3], rgtr[4], rgtr[5], rgtr[6], rgtr[7], rgtr[8], rgtr[9]))
+        dbuci.commit()
+        response = {"respuesta":"El paciente ha sido ingresado exitosamente."}
+        sendT(sckt, srv, json.dumps(response))
+    elif opcion == 5:
+        print(rgtr)
+        crsr.execute("INSERT INTO personalMedico (RUT, nombre, fechanac, especialidad, disponible) VALUES (%s, %s, %s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2], rgtr[3], rgtr[4]))
+        dbuci.commit()
+        response = {"respuesta":"El médico ha sido ingresado exitosamente."}
+        sendT(sckt, srv, json.dumps(response))
+    elif opcion == 6:
+        print(rgtr)
+        crsr.execute("INSERT INTO equipoMedico (u_paciente_RUT, tipo, fechaInicio, tiempoUso, estado) VALUES(%s, %s, %s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2], rgtr[3], rgtr[4]))
+        dbuci.commit()
+        response = {"respuesta":"La herramienta médica ha sido ingresada exitosamente."}
+        sendT(sckt, srv, json.dumps(response))
 
 if __name__ == "__main__":
     try:
@@ -57,6 +75,29 @@ if __name__ == "__main__":
                 l.append(mTloads["nombre"])
                 l.append(mTloads["fechaNac"])
                 l.append(mTloads["disponible"])
+            elif mTloads["opcion"] == 4:
+                l.append(mTloads["RUT"])
+                l.append(mTloads["nombre"])
+                l.append(mTloads["fechanac"])
+                l.append(mTloads["edad"])
+                l.append(mTloads["enfermedad"])
+                l.append(mTloads["sintomas"])
+                l.append(mTloads["dieta"])
+                l.append(mTloads["alergia"])
+                l.append(mTloads["medicamentos"])
+                l.append(mTloads["tratamiento"])
+            elif mTloads["opcion"] == 5:
+                l.append(mTloads["RUT"])
+                l.append(mTloads["nombre"])
+                l.append(mTloads["fechanac"])
+                l.append(mTloads["especialidad"])
+                l.append(mTloads["disponible"])
+            elif mTloads["opcion"] == 5:
+                l.append(mTloads["u_paciente_RUT"])
+                l.append(mTloads["tipo"])
+                l.append(mTloads["fechaInicio"])
+                l.append(mTloads["tiempoUso"])
+                l.append(mTloads["estado"])
             addE(opcion = mTloads["opcion"], rgtr = l)
         else:
             response = {"respuesta":"servicio incorrecto"}

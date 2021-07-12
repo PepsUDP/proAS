@@ -189,14 +189,26 @@ def menuAE():
                 list.append(inpt)
             arg = {"opcion": opcion, "RUT": list[0], "nombre": list[1], "fechaNac": list[2], "disponible": 1}
         elif opcion == 4:
-            print("4")
-            arg = {"opcion": opcion}
+            pc=["RUT", "Nombre", "Fecha de nacimiento (YYYY-MM-DD)", "Edad", "Enfermedad", "Sintomas", "Dieta", "Alergias", "Medicamentos", "Tratamiento"]
+            for i in pc:
+                print("Ingrese ", i, ": ")
+                inpt = input()
+                list.append(inpt)
+            arg = {"opcion": opcion, "RUT": list[0], "nombre": list[1], "fechanac": list[2], "edad": list[3], "enfermedad": list[4], "sintomas": list[5], "dieta": list[6], "alergias": list[7], "medicamentos": list[8], "tratamiento": list[9]}
         elif opcion == 5:
-            print("5")
-            arg = {"opcion": opcion}
+            pm=["RUT", "Nombre", "Fecha de nacimiento", "Especialidad", "Disponible (Si=1; No=0)"]
+            for i in pm:
+                print("Ingrese ", i, ": ")
+                inpt = input()
+                list.append(inpt)
+            arg = {"opcion": opcion, "RUT": list[0], "nombre": list[1], "fechanac": list[2], "especialidad": list[3], "disponible": 1}
         elif opcion == 6:
-            print("6")
-            arg = {"opcion": opcion}
+            em=["RUT de ultimo paciente que lo utilizo", "Tipo de equipo medico", "Fecha de inicio (YYYY-MM-DD)", "Tiempo de uso (horas)", "Estado"]
+            for i in em:
+                print("Ingrese ", i, ": ")
+                inpt = input()
+                list.append(inpt)
+            arg = {"opcion": opcion, "u_paciente_RUT": list[0], "tipo": list[1], "fechaInicio": list[2], "tiempoUso": list[3], "estado": "Disponible"}
         sendT(sckt, aden, json.dumps(arg))
         nS, msgT = listenB(sckt)
         msg = msgT[12:]
