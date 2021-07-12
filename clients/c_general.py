@@ -150,5 +150,5 @@ if __name__ == "__main__":
     except: 
         print('No es posible la conexión al bus')
         quit()
-        
-    #menuIngresar()
+
+    menuSULI()
