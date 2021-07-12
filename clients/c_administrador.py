@@ -260,7 +260,7 @@ def menuEE():
     ***************************************
     * Usuario administrador               *
     *-------------------------------------*
-    * Eliminar entidad                     *
+    * Eliminar entidad                    *
     * Elija una opción                    *
     *-------------------------------------*
     * 1) Pasillos                         *

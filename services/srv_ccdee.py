@@ -7,6 +7,7 @@ srv = 'ccdee'
 def eliE(opcion, rgtr):
     crsr = dbuci.cursor()
     fetched = None
+    print(rgtr)
     if opcion == 1:
         crsr.execute("DELETE FROM pasillo WHERE id_pasillo = %s", (rgtr))
         dbuci.commit()
