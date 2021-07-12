@@ -8,7 +8,7 @@ def addE(opcion, rgtr):
     crsr = dbuci.cursor()
     fetched = None
     if opcion == 1:
-        crsr.execute("INSERT INTO PASILLO (estado) VALUES (%s)", (rgtr[0],))
+        crsr.execute("INSERT INTO pasillo (estado) VALUES (%s)", (rgtr[0],))
         dbuci.commit()
         response = {"respuesta":"El pasillo ha sido ingresado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
