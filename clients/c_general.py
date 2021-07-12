@@ -137,7 +137,6 @@ def menuLI():
             sesion=msg["respuesta"]
             print(sesion)
             if sesion["rol"] == 2:
-                #print("menuGD()")
                 menuGD()
             else:
                 menuLI()

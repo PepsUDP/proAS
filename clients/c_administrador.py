@@ -3,6 +3,7 @@ from os import system, name
 from comunicacion import clearS, sendT, listenB
 rgtr = "ccdsu"  # Registro
 lgin = "ccdli"  # Ingreso
+aden = "ccdae"  # Agregar entidad
 
 sesion = {"username":None,"password":None,"rol":None}
 sckt = None
@@ -138,6 +139,63 @@ def menuLI():
                 print("menuCliente()")
             else:
                 menuLI()
+
+def menuAE():
+    menuAE2 = """
+    ***************************************
+    * Usuario administrador               *
+    *-------------------------------------*
+    * Agregar entidad                     *
+    * Elija una opción                    *
+    *-------------------------------------*
+    * 1) Pasillos                         *
+    * 2) Piezas                           *
+    * 3) Camas                            *
+    * 4) Pacientes                        *
+    * 5) Personal Médico                  *
+    * 6) Respiradores                     *
+    *                                     *
+    * 7) Cerrar sesión                    *
+    ***************************************
+    
+    Opción: """
+    opcion = int(input(menuAE2))
+    if opcion == 7:
+        menuSULI()
+    else:
+        list = []
+        inpt = None
+        if opcion == 1:
+            print("1")
+            pm=["Estado (Si = 1, No = 0)"]
+            for i in pm:
+                inpt = input("Ingrese ", i, ": ")
+                list.append(inpt)
+            arg = {"opcion": opcion, "estado": list[0]}
+        elif opcion == 2:
+            print("2")
+            arg = {"opcion": opcion}
+        elif opcion == 3:
+            print("3")
+            arg = {"opcion": opcion}
+        elif opcion == 4:
+            print("4")
+            arg = {"opcion": opcion}
+        elif opcion == 5:
+            print("5")
+            arg = {"opcion": opcion}
+        elif opcion == 6:
+            print("6")
+            arg = {"opcion": opcion}
+        sendT(sckt, aden, json.dumps(arg))
+        nS, msgT = listenB(sckt)
+        msg = msgT[12:]
+        if nS == aden:
+            if msg:
+                print(msg)
+                enter = input("Presione enter para continuar. ")
+                clearS()
+                menuAE()
 
 if __name__ == "__main__":
     try:
