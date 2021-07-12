@@ -29,7 +29,7 @@ def getData(opcion):
     if fetched:
         print(fetched)
         #response = {"respuesta":fetched}
-        #sendT(sckt, srv, json.loads(response))
+        sendT(sckt, srv, fetched)
     else:
         print("No sacó nada")
 
