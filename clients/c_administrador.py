@@ -134,7 +134,7 @@ def menuLI():
             global sesion
             sesion=msg["respuesta"]
             print(sesion)
-            if sesion["rol"] == 2:
+            if sesion["rol"] == 1:
                 # Menu cliente
                 #print("menuCliente()")
                 menuAE()
