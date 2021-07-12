@@ -7,7 +7,7 @@ srv = 'ccdli'
 def loginU(login):
     crsr = dbuci.cursor()
     #print("registrar", registro)
-    crsr.execute("SELECT * FROM users WHERE username = %s AND password = %s", (login["username"],login["password"]))
+    crsr.execute("SELECT * FROM users WHERE username = %s AND password = %s AND rol = %s", (login["username"],login["password"],login["rol"]))
     fetched = crsr.fetchone()
     if fetched:
         print(fetched)
