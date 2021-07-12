@@ -13,11 +13,13 @@ def addE(opcion, rgtr):
         response = {"respuesta":"El pasillo ha sido ingresado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 2:
+        print(rgtr)
         crsr.execute("INSERT INTO sala (id_sala, cantCamas, camasDisp, estado) VALUES (%s, %s, %s, %s)", (rgtr[0], rgtr[1], rgtr[1], rgtr[2]))
         dbuci.commit()
         response = {"respuesta":"La pieza ha sido ingresada exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 3:
+        print(rgtr)
         crsr.execute("INSERT INTO personalLimpieza (RUT, nombre, fechaNac, disponible) VALUES (%s, %s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2], 1))
         dbuci.commit()
         response = {"respuesta":"El empleado de limpieza ha sido ingresado exitosamente."}
