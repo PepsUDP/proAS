@@ -152,10 +152,10 @@ def menuAE():
     *-------------------------------------*
     * 1) Pasillos                         *
     * 2) Piezas                           *
-    * 3) Camas                            *
+    * 3) Personal Limpieza                *
     * 4) Pacientes                        *
     * 5) Personal Médico                  *
-    * 6) Respiradores                     *
+    * 6) Equipo Médico                    *
     *                                     *
     * 7) Cerrar sesión                    *
     ***************************************
