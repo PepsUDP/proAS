@@ -48,17 +48,16 @@ if __name__ == "__main__":
             print(mTloads["opcion"])
             if mTloads["opcion"] == 1:
                 l.append(mTloads["estado"])
-                addE(opcion = mTloads["opcion"], rgtr = l)
             elif mTloads["opcion"] == 2:
                 l.append(mTloads["id_sala"])
                 l.append(mTloads["cantCamas"])
                 l.append(mTloads["estado"])
-                addE(opcion = mTloads["opcion"], rgtr = l)
             elif mTloads["opcion"] == 3:
                 l.append(mTloads["RUT"])
                 l.append(mTloads["nombre"])
                 l.append(mTloads["fechaNac"])
                 l.append(mTloads["disponible"])
+            addE(opcion = mTloads["opcion"], rgtr = l)
         else:
             response = {"respuesta":"servicio incorrecto"}
             sendT(sckt, srv, json.dumps(response))
