@@ -31,6 +31,7 @@ def getData(opcion):
         fetched = crsr.fetchall()
         for row in fetched:
             mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":row[3],"tiempoUso":row[4],"estado":row[5]}))
+            print(row[3])
     elif opcion == 4:
         crsr.execute("SELECT * FROM paciente;") 
         fetched = crsr.fetchall()
