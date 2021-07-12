@@ -120,7 +120,7 @@ def menuLI():
     arg = {"username": username, "password": password}
     #arg = {"username": username, "password": password, "rol": rol}
     print(arg)
-    sendT(sock, lgin, json.dumps(arg))
+    sendT(sckt, lgin, json.dumps(arg))
     nS, msgT=listenB(sckt)
     print(msgT)
     msg = json.loads(msgT[12:])
