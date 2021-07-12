@@ -8,7 +8,7 @@ def addE(opcion, rgtr):
     crsr = dbuci.cursor()
     fetched = None
     if opcion == 1:
-        crsr.execute("INSERT INTO PASILLO (estado) VALUES (%s)", (rgtr["estado"],))
+        crsr.execute("INSERT INTO PASILLO (estado) VALUES (%s)", (rgtr[0],))
         dbuci.commit()
         response = {"respuesta":"El pasillo ha sido ingresado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
@@ -31,13 +31,13 @@ if __name__ == "__main__":
         print(nS, mT)
         print(mT)
         if nS == srv:
+            l = []
             mTloads = json.loads(mT)
-            print(mT[0])
             print(mTloads["opcion"])
             print(mTloads["estado"])
-            if mT["opcion"] == 1:
-                print("hola")
-                #addE(rgtr=json.loads(mT))
+            if mTloads["opcion"] == 1:
+                l.append(mTloads["estado"])
+                addE(opcion = mTloads["opcion"], rgtr = l)
         else:
             response = {"respuesta":"servicio incorrecto"}
             sendT(sckt, srv, json.dumps(response))
