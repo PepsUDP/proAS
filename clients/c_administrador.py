@@ -203,12 +203,12 @@ def menuAE():
                 list.append(inpt)
             arg = {"opcion": opcion, "RUT": list[0], "nombre": list[1], "fechanac": list[2], "especialidad": list[3], "disponible": 1}
         elif opcion == 6:
-            em=["RUT de ultimo paciente que lo utilizo", "Tipo de equipo medico", "Fecha de inicio de uso (YYYY-MM-DD)", "Tiempo de uso (horas)"]
+            em=["Tipo de equipo medico", "Fecha de inicio de uso (YYYY-MM-DD)", "Tiempo de uso (horas)"]
             for i in em:
                 print("Ingrese ", i, ": ")
                 inpt = input()
                 list.append(inpt)
-            arg = {"opcion": opcion, "u_paciente_RUT": list[0], "tipo": list[1], "fechaInicio": list[2], "tiempoUso": list[3], "estado": "Disponible"}
+            arg = {"opcion": opcion, "u_paciente_RUT": 0, "tipo": list[1], "fechaInicio": list[2], "tiempoUso": list[3], "estado": "Disponible"}
         sendT(sckt, aden, json.dumps(arg))
         nS, msgT = listenB(sckt)
         msg = msgT[12:]
