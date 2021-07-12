@@ -15,7 +15,7 @@ def getData(opcion):
         crsr.execute("SELECT * FROM sala;")
         fetched = crsr.fetchall()     
     elif opcion == 3:
-        crsr.execute("SELECT * FROM equipoMedico WHERE tipo=cama;")   
+        crsr.execute("SELECT * FROM equipoMedico WHERE tipo='cama';")   
         fetched = crsr.fetchall() 
     elif opcion == 4:
         crsr.execute("SELECT * FROM paciente;") 
@@ -24,7 +24,7 @@ def getData(opcion):
         crsr.execute("SELECT * FROM personalMedico;")
         fetched = crsr.fetchall()
     elif opcion == 6:    
-        crsr.execute("SELECT * FROM equipoMedico WHERE tipo=respirador;")
+        crsr.execute("SELECT * FROM equipoMedico WHERE tipo='respirador';")
         fetched = crsr.fetchall()
     if fetched:
         print(fetched)
