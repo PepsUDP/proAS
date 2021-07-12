@@ -20,7 +20,7 @@ def listenB(sckt):
     msgT = ''
 
     while True:
-        data = sckt.recv(8192)
+        data = sckt.recv(4096)
         if amntRcvd == 0:
             sT = int(data[:5].decode())
             nameSrv = data[5:10].decode()
