@@ -1,8 +1,7 @@
-import socket, sys, json
-from os import curdir
+import socket, json
 from db_uci import dbuci
 from comunicacion import sendT, listenB, registerS
-srv = "ccdli"
+srv = 'ccdli'
 
 #log in usuario
 def loginU(login):

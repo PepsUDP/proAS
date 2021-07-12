@@ -1,5 +1,4 @@
-import socket, sys, json
-from typing import Counter
+import socket, json
 from db_uci import dbuci
 from comunicacion import sendT, listenB, registerS
 srv = 'ccdsu'
