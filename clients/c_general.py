@@ -73,13 +73,13 @@ def menuSU():
     Opción: """
     clearS()
     yn = input(menuYN)
-    if yn == "y":
-        arg = {"username": username, "password": password, "rol": rol}
+    if yn == 'y':
+        arg = {"username": username, "password": password, "rol": "2"}
         print(arg)
         sendT(sckt, rgtr, json.dumps(arg))
         nS, msgT = listenB(sckt)
         print(msgT)
-        msg =  json.loads(msgT[12:])
+        msg = json.loads(msgT[12:])
         print(nS)
         print(msgT)
         if nS == rgtr:
