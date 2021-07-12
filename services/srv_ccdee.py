@@ -15,31 +15,34 @@ def eliE(opcion, rgtr):
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 2:
         print(rgtr)
-        crsr.execute("DELETE FROM sala WHERE id_sala=%s", (rgtr,))
+        crsr.execute("DELETE FROM sala WHERE id_sala = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"La pieza ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 3:
         print(rgtr)
-        crsr.execute("DELETE FROM personalLimpieza WHERE RUT=%s", (rgtr,))
+        crsr.execute("DELETE FROM personalLimpieza WHERE RUT = %s", (rgtr,))
+        crsr.execute("DELETE FROM aseo WHERE personalL_rut = %s", (rgtr,))
+        crsr.execute("DELETE FROM limpieza WHERE personalL_rut = %s", (rgtr,))
+        crsr.execute("DELETE FROM sanitizacion WHERE personalL_rut = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"El empleado de limpieza ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 4:
         print(rgtr)
-        crsr.execute("DELETE FROM paciente WHERE RUT=%s", (rgtr,))
+        crsr.execute("DELETE FROM paciente WHERE RUT = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"El paciente ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 5:
         print(rgtr)
-        crsr.execute("DELETE FROM personalMedico WHERE RUT=%s", (rgtr,))
+        crsr.execute("DELETE FROM personalMedico WHERE RUT = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"El medico ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 6:
         print(rgtr)
-        crsr.execute("DELETE FROM equipoMedico WHERE id_equipoMedico=%s", (rgtr,))
+        crsr.execute("DELETE FROM equipoMedico WHERE id_equipoMedico = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"La herramienta medica ha sido eliminada exitosamente."}
         sendT(sckt, srv, json.dumps(response))
