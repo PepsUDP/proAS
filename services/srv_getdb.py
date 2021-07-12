@@ -29,11 +29,12 @@ def getData(opcion):
     if fetched:
         print(fetched)
         print(type(fetched))
-        test = fetched[2:]
-        print(test)
+
         response = json.dumps(fetched)
         print(response)
         print(type(response))
+        test = response[2:]
+        print(test)
         #response = {"respuesta":fetched}
         sendT(sckt, srv, str(fetched))
     else:
