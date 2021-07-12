@@ -58,7 +58,6 @@ if __name__ == "__main__":
 
     while True:
         nS, mT = listenB(sckt)
-        print(nS, mT)
         print(mT)
         if nS == srv:
             l = []
@@ -83,7 +82,7 @@ if __name__ == "__main__":
                 l.append(mTloads["enfermedad"])
                 l.append(mTloads["sintomas"])
                 l.append(mTloads["dieta"])
-                l.append(mTloads["alergia"])
+                l.append(mTloads["alergias"])
                 l.append(mTloads["medicamentos"])
                 l.append(mTloads["tratamiento"])
             elif mTloads["opcion"] == 5:
