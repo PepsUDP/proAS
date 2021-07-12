@@ -30,6 +30,7 @@ def getData(opcion):
         crsr.execute("SELECT * FROM equipoMedico WHERE tipo='cama';")   
         fetched = crsr.fetchall()
         for row in fetched:
+            print(fetched)
             mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":str(row[3]),"tiempoUso":row[4],"estado":row[5]}))
     elif opcion == 4:
         crsr.execute("SELECT * FROM paciente;") 
@@ -71,10 +72,7 @@ if __name__ == "__main__":
 
     while True:
         nS, mT = listenB(sckt)
-        print(nS, mT)
         msg = json.loads(mT)
-        print("msg", msg)
-        print("msg:opcion",msg["opcion"])
         if nS == srv:
             getData(opcion=msg["opcion"])
         else:
