@@ -208,7 +208,7 @@ def menuAE():
                 print("Ingrese ", i, ": ")
                 inpt = input()
                 list.append(inpt)
-            arg = {"opcion": opcion, "u_paciente_RUT": 0, "tipo": list[1], "fechaInicio": list[2], "tiempoUso": list[3], "estado": "Disponible"}
+            arg = {"opcion": opcion, "u_paciente_RUT": 0, "tipo": list[0], "fechaInicio": list[1], "tiempoUso": list[2], "estado": "Disponible"}
         sendT(sckt, aden, json.dumps(arg))
         nS, msgT = listenB(sckt)
         msg = msgT[12:]
