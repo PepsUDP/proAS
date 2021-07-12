@@ -162,17 +162,22 @@ def menuGD():
     
     Opción: """
     opcion = int(input(menuGD2))
-    arg = {"opcion": opcion}
-    sendT(sckt, gtdb, json.dumps(arg))
-    nS, msgT = listenB(sckt)
-    msg = msgT[12:]
-    if nS == gtdb:
-        if msg:
-            print(msg)
+    if opcion == 7:
+        #arg = {"username": None, "password": None, "rol": None}
+        #sendT(sckt, lgin, json.dumps(arg))
+        menuSULI()
+    else:
+        arg = {"opcion": opcion}
+        sendT(sckt, gtdb, json.dumps(arg))
+        nS, msgT = listenB(sckt)
+        msg = msgT[12:]
+        if nS == gtdb:
+            if msg:
+                print(msg)
 
-            enter = input("Presione enter para continuar. ")
-            clearS()
-            menuGD()
+                enter = input("Presione enter para continuar. ")
+                clearS()
+                menuGD()
 
 if __name__ == "__main__":
     try:
