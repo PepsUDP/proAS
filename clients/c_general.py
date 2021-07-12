@@ -76,7 +76,7 @@ def menuSU():
     clearS()
     yn = input(menuYN)
     if yn == 'y':
-        arg = {"username": username, "password": password, "rol": "2"}
+        arg = {"username": username, "password": password, "rol": 2}
         print(arg)
         sendT(sckt, rgtr, json.dumps(arg))
         nS, msgT = listenB(sckt)
