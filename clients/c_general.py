@@ -164,7 +164,7 @@ def menuGD():
     opcion = int(input(menuGD))
     arg = {"opcion": opcion}
     print(arg)
-    sendT(sckt, ccddb, json.dumps(arg))
+    sendT(sckt, gtdb, json.dumps(arg))
     nS, msgT = listenB(sckt)
     print(msgT)
     msg = json.loads(msgT[12:])
