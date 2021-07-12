@@ -34,13 +34,13 @@ def addE(opcion, rgtr):
         print(rgtr)
         crsr.execute("INSERT INTO personalMedico (RUT, nombre, fechanac, especialidad, disponible) VALUES (%s, %s, %s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2], rgtr[3], rgtr[4]))
         dbuci.commit()
-        response = {"respuesta":"El médico ha sido ingresado exitosamente."}
+        response = {"respuesta":"El medico ha sido ingresado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 6:
         print(rgtr)
         crsr.execute("INSERT INTO equipoMedico (u_paciente_RUT, tipo, fechaInicio, tiempoUso, estado) VALUES(%s, %s, %s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2], rgtr[3], rgtr[4]))
         dbuci.commit()
-        response = {"respuesta":"La herramienta médica ha sido ingresada exitosamente."}
+        response = {"respuesta":"La herramienta medica ha sido ingresada exitosamente."}
         sendT(sckt, srv, json.dumps(response))
 
 if __name__ == "__main__":
@@ -91,7 +91,7 @@ if __name__ == "__main__":
                 l.append(mTloads["fechanac"])
                 l.append(mTloads["especialidad"])
                 l.append(mTloads["disponible"])
-            elif mTloads["opcion"] == 5:
+            elif mTloads["opcion"] == 6:
                 l.append(mTloads["u_paciente_RUT"])
                 l.append(mTloads["tipo"])
                 l.append(mTloads["fechaInicio"])

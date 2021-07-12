@@ -196,14 +196,14 @@ def menuAE():
                 list.append(inpt)
             arg = {"opcion": opcion, "RUT": list[0], "nombre": list[1], "fechanac": list[2], "edad": list[3], "enfermedad": list[4], "sintomas": list[5], "dieta": list[6], "alergias": list[7], "medicamentos": list[8], "tratamiento": list[9]}
         elif opcion == 5:
-            pm=["RUT", "Nombre", "Fecha de nacimiento", "Especialidad", "Disponible (Si=1; No=0)"]
+            pm=["RUT", "Nombre", "Fecha de nacimiento", "Especialidad"]
             for i in pm:
                 print("Ingrese ", i, ": ")
                 inpt = input()
                 list.append(inpt)
             arg = {"opcion": opcion, "RUT": list[0], "nombre": list[1], "fechanac": list[2], "especialidad": list[3], "disponible": 1}
         elif opcion == 6:
-            em=["RUT de ultimo paciente que lo utilizo", "Tipo de equipo medico", "Fecha de inicio (YYYY-MM-DD)", "Tiempo de uso (horas)", "Estado"]
+            em=["RUT de ultimo paciente que lo utilizo", "Tipo de equipo medico", "Fecha de inicio de uso (YYYY-MM-DD)", "Tiempo de uso (horas)"]
             for i in em:
                 print("Ingrese ", i, ": ")
                 inpt = input()
