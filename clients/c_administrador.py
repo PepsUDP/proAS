@@ -142,6 +142,7 @@ def menuLI():
                 menuLI()
 
 def menuAE():
+    clearS()
     menuAE2 = """
     ***************************************
     * Usuario administrador               *
@@ -170,7 +171,8 @@ def menuAE():
             print("1")
             pm=["Estado (Si = 1, No = 0)"]
             for i in pm:
-                inpt = input("Ingrese ", i, ": ")
+                print("Ingrese ", i, ": ")
+                inpt = input()
                 list.append(inpt)
             arg = {"opcion": opcion, "estado": list[0]}
         elif opcion == 2:
