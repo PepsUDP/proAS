@@ -170,8 +170,8 @@ def menuGD():
     msg = json.loads(msgT[12:])
     print(msg)
     if nS == gtdb:
-        if msg["respuesta"]:
-            print(msg["respuesta"])
+        if msg:
+            print(msg)
 
 if __name__ == "__main__":
     try:
