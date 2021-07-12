@@ -33,7 +33,6 @@ if __name__ == "__main__":
         if nS == srv:
             mTloads = json.loads(mT)
             print(mT[0])
-            print(mTloads[0])
             print(mTloads["opcion"])
             print(mTloads["estado"])
             if mT["opcion"] == 1:
