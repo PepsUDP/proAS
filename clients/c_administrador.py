@@ -168,7 +168,7 @@ def menuCRUD():
     elif opcion == 1:
         menuAE()
     elif opcion == 2:
-        print("2")
+        menuEE()
     elif opcion == 3:
         print("3")
     elif opcion == 4:
