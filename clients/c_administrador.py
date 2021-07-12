@@ -175,14 +175,19 @@ def menuAE():
                 list.append(inpt)
             arg = {"opcion": opcion, "estado": list[0]}
         elif opcion == 2:
-            sa=["Cantidad de camas", "Estado (Limpio o Por limpiar)"]
+            sa=["ID de cama", "Cantidad de camas", "Estado (Limpio o Por limpiar)"]
             for i in sa:
                 print("Ingrese ", i, ": ")
                 inpt = input()
                 list.append(inpt)
-            arg = {"opcion": opcion, "cantCamas": list[0], "estado": list[1]}
+            arg = {"opcion": opcion, "id_sala": list[0], "cantCamas": list[1], "estado": list[2]}
         elif opcion == 3:
-            print("3")
+            pl=["RUT", "Nombre", "Fecha de nacimiento", "Disponible (Si=1; No=0)"]
+            for i in pl:
+                print("Ingrese ", i, ": ")
+                inpt = input()
+                list.append(inpt)
+            arg = {"opcion": opcion, "": list[0], "": list[1], "": list[2], "": list[3]}
             arg = {"opcion": opcion}
         elif opcion == 4:
             print("4")
