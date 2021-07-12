@@ -48,6 +48,7 @@ if __name__ == "__main__":
     while True:
         nS, mT = listenB(sckt)
         print(nS, mT)
+        print(mT["opcion"])
         if nS == srv:
             getData(opcion=json.loads(mT))
         else:
