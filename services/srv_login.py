@@ -17,7 +17,6 @@ def loginU(login):
         response = {"respuesta":"No es posible entrar con el usuario ingresado."}
         sendT(sckt, srv, json.dumps(response))
 
-
 if __name__ == "__main__":
     try:
         sckt = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
