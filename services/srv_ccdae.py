@@ -31,9 +31,11 @@ if __name__ == "__main__":
         print(nS, mT)
         print(mT)
         if nS == srv:
-            print(json.loads(mT))
-            print(mT["opcion"])
-            print(mT["estado"])
+            mTloads = json.loads(mT)
+            print(mT[0])
+            print(mTloads[0])
+            print(mTloads["opcion"])
+            print(mTloads["estado"])
             if mT["opcion"] == 1:
                 print("hola")
                 #addE(rgtr=json.loads(mT))
