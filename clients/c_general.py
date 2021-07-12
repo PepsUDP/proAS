@@ -160,7 +160,7 @@ def menuGD():
     ***************************************
     
     Opción: """
-    opcion = int(input("Ingrese opcion: "))
+    opcion = int(input(menuGD))
     fetched = None
     crsr = dbuci.cursor()
     if opcion == 1:
