@@ -9,20 +9,39 @@ def asiP(opcion, rgtr):
     fetched = None
     print(rgtr)
     if opcion == 1:
-        crsr.execute("UPDATE equipoMedico SET u_paciente_RUT = %s, fechaInicio = %s, tiempoUso = %s, estado = %s WHERE id_equipoMedico = %s AND tipo = 'cama'", (rgtr[1],rgtr[2],rgtr[3],rgtr[4],rgtr[0]))
-        dbuci.commit()
-        response = {"respuesta":"La cama ha sido asignada exitosamente."}
-        sendT(sckt, srv, json.dumps(response))
+        crsr.execute("SELECT RUT FROM paciente WHERE RUT = %s", (rgtr[1],))
+        fetched = crsr.fetchone()
+        if fetched == None:
+            response = {"respuesta":"El paciente no se encuentra en los registros."}
+            sendT(sckt, srv, json.dumps(response))
+        else:
+            crsr.execute("UPDATE equipoMedico SET u_paciente_RUT = %s, fechaInicio = %s, tiempoUso = %s, estado = %s WHERE id_equipoMedico = %s AND tipo = 'cama'", (rgtr[1],rgtr[2],rgtr[3],rgtr[4],rgtr[0]))
+            dbuci.commit()
+            response = {"respuesta":"La cama ha sido asignada exitosamente."}
+            sendT(sckt, srv, json.dumps(response))
     elif opcion == 2:
-        crsr.execute("INSERT INTO atencion (personalM_rut, paciente_rut, fecha) VALUES (%s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2]))
-        dbuci.commit()
-        response = {"respuesta":"El paciente ha sido asignado exitosamente."}
-        sendT(sckt, srv, json.dumps(response))
+        crsr.execute("SELECT RUT FROM paciente WHERE RUT = %s", (rgtr[1],))
+        fetched1 = crsr.fetchone()
+        crsr.execute("SELECT RUT FROM personalMedico WHERE RUT = %s", (rgtr[0]))
+        fetched2 = crsr.fetchone()
+        if fetched1 == None or fetched2 = None:
+            response = {"respuesta":"No es posible asignar entidades inexistentes."}
+        else:
+            crsr.execute("INSERT INTO atencion (personalM_rut, paciente_rut, fecha) VALUES (%s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2]))
+            dbuci.commit()
+            response = {"respuesta":"El paciente ha sido asignado exitosamente."}
+            sendT(sckt, srv, json.dumps(response))
     elif opcion == 3:
-        crsr.execute("UPDATE equipoMedico SET u_paciente_RUT = %s, fechaInicio = %s, tiempoUso = %s, estado = %s WHERE id_equipoMedico = %s AND tipo = 'respirador'", (rgtr[1],rgtr[2],rgtr[3],rgtr[4],rgtr[0]))
-        dbuci.commit()
-        response = {"respuesta":"El respirador ha sido asignado exitosamente."}
-        sendT(sckt, srv, json.dumps(response))
+        crsr.execute("SELECT RUT FROM paciente WHERE RUT = %s", (rgtr[1],))
+        fetched = crsr.fetchone()
+        if fetched == None:
+            response = {"respuesta":"El paciente no se encuentra en los registros."}
+            sendT(sckt, srv, json.dumps(response))
+        else:
+            crsr.execute("UPDATE equipoMedico SET u_paciente_RUT = %s, fechaInicio = %s, tiempoUso = %s, estado = %s WHERE id_equipoMedico = %s AND tipo = 'respirador'", (rgtr[1],rgtr[2],rgtr[3],rgtr[4],rgtr[0]))
+            dbuci.commit()
+            response = {"respuesta":"El respirador ha sido asignado exitosamente."}
+            sendT(sckt, srv, json.dumps(response))
 
 if __name__ == "__main__":
     try:
