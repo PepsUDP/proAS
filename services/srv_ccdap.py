@@ -24,7 +24,7 @@ def asiP(opcion, rgtr):
         fetched1 = crsr.fetchone()
         crsr.execute("SELECT RUT FROM personalMedico WHERE RUT = %s", (rgtr[0]))
         fetched2 = crsr.fetchone()
-        if fetched1 == None or fetched2 = None:
+        if fetched1 == None or fetched2 == None:
             response = {"respuesta":"No es posible asignar entidades inexistentes."}
         else:
             crsr.execute("INSERT INTO atencion (personalM_rut, paciente_rut, fecha) VALUES (%s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2]))
