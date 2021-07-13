@@ -346,13 +346,13 @@ def menuAP():
             arg = {"opcion": opcion, "personalM_rut": list[1], "paciente_rut": list[0], "fecha": list[2]}
         elif opcion == 3:
             rap = ["ID del respirador a asignar", "RUT del paciente", "Fecha inicio de uso (YYYY-MM-DD)", "Tiempo de uso estimado (horas)"]
-            for i in cap:
+            for i in rap:
                 print("Ingrese ", i, ": ")
                 inpt = input()
                 list.append(inpt)
             arg = {"opcion": opcion, "id_equipoMedico": list[0], "u_paciente_RUT": list[1], "fechaInicio": list[2], "tiempoUso": list[3], "estado": "Ocupado"}
         sendT(sckt, aspe, json.dumps(arg))
-        nS, mT = listenB(sckt)
+        nS, msgT = listenB(sckt)
         msg = msgT[12:]
         if nS == aspe:
             if msg:
