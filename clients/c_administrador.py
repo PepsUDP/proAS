@@ -72,7 +72,7 @@ def menuSU():
     
     Usuario: {username}
     Contraseña: {password}
-    Rol: {"Administrador" if rol == "1" else "General"}
+    Rol: Administrador
     
     Opción: """
     clearS()
