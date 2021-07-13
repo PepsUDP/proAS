@@ -22,7 +22,7 @@ def asiP(opcion, rgtr):
     elif opcion == 2:
         crsr.execute("SELECT RUT FROM paciente WHERE RUT = %s", (rgtr[1],))
         fetched1 = crsr.fetchone()
-        crsr.execute("SELECT RUT FROM personalMedico WHERE RUT = %s", (rgtr[0]))
+        crsr.execute("SELECT RUT FROM personalMedico WHERE RUT = %s", (rgtr[0],))
         fetched2 = crsr.fetchone()
         if fetched1 == None or fetched2 == None:
             response = {"respuesta":"No es posible asignar entidades inexistentes."}
