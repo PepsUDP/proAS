@@ -9,19 +9,19 @@ def asiP(opcion, rgtr):
     fetched = None
     print(rgtr)
     if opcion == 1:
-        crsr.execute("UPDATE equipoMedico SET u_paciente_RUT = %s, fechaInicio = %s, tiempoUso = %s, estado = %s WHERE id_equipoMedico = %s", (rgtr[1],rgtr[2],rgtr[3],rgtr[4],rgtr[0]))
+        crsr.execute("UPDATE equipoMedico SET u_paciente_RUT = %s, fechaInicio = %s, tiempoUso = %s, estado = %s WHERE id_equipoMedico = %s AND tipo = 'cama'", (rgtr[1],rgtr[2],rgtr[3],rgtr[4],rgtr[0]))
         dbuci.commit()
         response = {"respuesta":"La cama ha sido asignada exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 2:
-        crsr.execute("INSERT INTO sala (personalM_rut, paciente_rut, fecha) VALUES (%s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2]))
+        crsr.execute("INSERT INTO atencion (personalM_rut, paciente_rut, fecha) VALUES (%s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2]))
         dbuci.commit()
-        response = {"respuesta":"Se le ha asignado un Personal Medico al Paciente exitosamente."}
+        response = {"respuesta":"El paciente ha sido asignado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 3:
-        crsr.execute("INSERT INTO pasillo (u_paciente_RUT, tipo, fechaInicio, tiempoUso, estado ) VALUES (%s, 'respirador', %s, %s, %s)", (rgtr[0],rgtr[1],rgtr[2],rgtr[3]))
+        crsr.execute("UPDATE equipoMedico SET u_paciente_RUT = %s, fechaInicio = %s, tiempoUso = %s, estado = %s WHERE id_equipoMedico = %s AND tipo = 'respirador'", (rgtr[1],rgtr[2],rgtr[3],rgtr[4],rgtr[0]))
         dbuci.commit()
-        response = {"respuesta":"El respirador ha sido asginado exitosamente."}
+        response = {"respuesta":"El respirador ha sido asignado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
 
 if __name__ == "__main__":
