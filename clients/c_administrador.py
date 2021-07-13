@@ -155,26 +155,23 @@ def menuCRUD():
     *-------------------------------------*
     * 1) Agregar entidad                  *
     * 2) Eliminar entidad                 *
-    * 3) Asignar equipo a paciente        *
-    * 4) Asignar medico a paciente        *
-    * 5) Consultar datos                  *
+    * 3) Asignar personal                 *
+    * 4) Consultar datos                  *
     *                                     *
-    * 6) Cerrar sesión                    *
+    * 5) Cerrar sesión                    *
     ***************************************
     
     Opción: """
     opcion = int(input(menuCRUD2))
-    if opcion == 6:
+    if opcion == 5:
         menuSULI()
     elif opcion == 1:
         menuAE()
     elif opcion == 2:
         menuEE()
     elif opcion == 3:
-        print("3")
+        menuAP()
     elif opcion == 4:
-        print("4")
-    elif opcion == 5:
         menuGD()
 
 def menuAE():
