@@ -5,6 +5,7 @@ rgtr = "ccdsu"  # Registro
 lgin = "ccdli"  # Ingreso
 aden = "ccdae"  # Agregar entidad
 elen = "ccdee"  # Eliminar entidad
+aspe = "ccdap"  # Asignar personal
 gtdb = "ccddb"  # Consultar datos
 
 sesion = {"username":None,"password":None,"rol":None}
@@ -309,7 +310,64 @@ def menuEE():
                 clearS()
                 menuEE()
 
+def menuAP():
+    clearS()
+    menuAP2 = """
+    ***************************************
+    * Usuario administrador               *
+    *-------------------------------------*
+    * Asignación de personal              *
+    * Elija una opción                    *
+    *-------------------------------------*
+    * 1) Cama a paciente                  *
+    * 2) Paciente a médico                *
+    * 3) Respirador a paciente            *
+    *                                     *
+    * 4) Cerrar sesión                    *
+    ***************************************
+    
+    Opción: """
+    opcion = int(input(menuAP2))
+    if opcion == 4:
+        menuSULI()
+    else:
+        list = []
+        inpt = None
+        if opcion == 1:
+            cap = ["ID de la cama a asignar", "RUT del paciente", "Fecha inicio de uso (YYYY-MM-DD)", "Tiempo de uso estimado (horas)"]
+            for i in cap:
+                print("Ingrese ", i, ": ")
+                inpt = input()
+                list.append(inpt)
+            arg = {"opcion": opcion, "id_equipoMedico": list[0], "u_paciente_RUT": list[1], "fechaInicio": list[2], "tiempoUso": list[3], "estado": "Ocupado"}
+        elif opcion == 2:
+            pam = ["RUT del paciente a asignar", "RUT del médico", "Fecha de atención"]
+            for i in pam:
+                print("Ingrese ", i, ": ")
+                inpt = input()
+                list.append(inpt)
+            arg = {"opcion": opcion, "personalM_rut": list[1], "paciente_rut": list[0], "fecha": list[2]}
+        elif opcion == 3:
+            rap = ["ID del respirador a asignar", "RUT del paciente", "Fecha inicio de uso (YYYY-MM-DD)", "Tiempo de uso estimado (horas)"]
+            for i in cap:
+                print("Ingrese ", i, ": ")
+                inpt = input()
+                list.append(inpt)
+            arg = {"opcion": opcion, "id_equipoMedico": list[0], "u_paciente_RUT": list[1], "fechaInicio": list[2], "tiempoUso": list[3], "estado": "Ocupado"}
+        sendT(sckt, aspe, json.dumps(arg))
+        nS, mT = listenB(sckt)
+        msg = msgT[12:]
+        if nS == aspe:
+            if msg:
+                print(msg)
+                enter = input("Presione enter para continuar. ")
+                clearS()
+                menuAP()
+            
+
+
 def menuGD():
+    clearS()
     menuGD2 = """
     ***************************************
     * Usuario administrador               *
