@@ -9,7 +9,7 @@ def asiP(opcion, rgtr):
     fetched = None
     print(rgtr)
     if opcion == 1:
-        crsr.execute("UPDATE equipoMedico (u_paciente_RUT, fechaInicio, tiempoUso, estado) VALUES (%s, %s, %s, %s) WHERE id_equipoMedico = %s", (rgtr[1],rgtr[2],rgtr[3],rgtr[4],rgtr[0]))
+        crsr.execute("UPDATE equipoMedico SET u_paciente_RUT = %s, fechaInicio = %s, tiempoUso = %s, estado = %s WHERE id_equipoMedico = %s", (rgtr[1],rgtr[2],rgtr[3],rgtr[4],rgtr[0]))
         dbuci.commit()
         response = {"respuesta":"La cama ha sido asignada exitosamente."}
         sendT(sckt, srv, json.dumps(response))
