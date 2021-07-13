@@ -26,6 +26,7 @@ def asiP(opcion, rgtr):
         fetched2 = crsr.fetchone()
         if fetched1 == None or fetched2 == None:
             response = {"respuesta":"No es posible asignar entidades inexistentes."}
+            sendT(sckt, srv, json.dumps(response))
         else:
             crsr.execute("INSERT INTO atencion (personalM_rut, paciente_rut, fecha) VALUES (%s, %s, %s)", (rgtr[0], rgtr[1], rgtr[2]))
             dbuci.commit()
