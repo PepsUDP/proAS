@@ -72,7 +72,7 @@ def menuSU():
     
     Usuario: {username}
     Contraseña: {password}
-    Rol: Administrador
+    Rol: Administrador.
     
     Opción: """
     clearS()
