@@ -8,8 +8,6 @@ def registerU(rgtr):
     crsr = dbuci.cursor()
     crsr.execute("SELECT username FROM users WHERE username = %s", (rgtr["username"],))
     fetched = crsr.fetchone()
-    print(rgtr)
-    print(rgtr["rol"])
     if fetched == None:
         if rgtr["rol"] in ["1","2"]:
             #rol = "administrador" if rgtr["rol"] == "1" else "general"
@@ -39,7 +37,6 @@ if __name__ == "__main__":
 
     while True:
         nS, mT = listenB(sckt)
-        print(nS, mT)
         if nS == srv:
             registerU(rgtr=json.loads(mT))
         else:

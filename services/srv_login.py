@@ -6,11 +6,9 @@ srv = 'ccdli'
 #log in usuario
 def loginU(login):
     crsr = dbuci.cursor()
-    #print("registrar", registro)
     crsr.execute("SELECT * FROM users WHERE username = %s AND password = %s AND rol = %s", (login["username"],login["password"],login["rol"]))
     fetched = crsr.fetchone()
     if fetched:
-        print(fetched)
         response = {"respuesta":{"username":fetched[1],"password":fetched[2],"rol":fetched[3]}}
         sendT(sckt, srv, json.dumps(response))
     else:
@@ -32,7 +30,6 @@ if __name__ == "__main__":
 
     while True:
         nS, mT = listenB(sckt)
-        print(nS, mT)
         if nS == srv:
             loginU(login = json.loads(mT))
         else:

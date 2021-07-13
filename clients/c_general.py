@@ -1,7 +1,6 @@
 import socket, json
 from os import system, name
 from comunicacion import clearS, sendT, listenB
-# from db_uci import dbuci
 rgtr = "ccdsu"  # Registro
 lgin = "ccdli"  # Ingreso
 gtdb = "ccddb"  # Consultar datos
@@ -77,14 +76,9 @@ def menuSU():
     yn = input(menuYN)
     if yn == 'y':
         arg = {"username": username, "password": password, "rol": "2"}
-        print(arg)
         sendT(sckt, rgtr, json.dumps(arg))
         nS, msgT = listenB(sckt)
-        print(msgT)
         msg = json.loads(msgT[12:])
-        print(nS)
-        print(msgT)
-        print("test", msg)
         if nS == rgtr:
             if msg["respuesta"]:
                 print(msg["respuesta"])
@@ -122,12 +116,9 @@ def menuLI():
 
     arg = {"username": username, "password": password, "rol": 2}
     #arg = {"username": username, "password": password, "rol": rol}
-    print(arg)
     sendT(sckt, lgin, json.dumps(arg))
     nS, msgT=listenB(sckt)
-    print(msgT)
     msg = json.loads(msgT[12:])
-    print(msg)
     if nS == lgin:
         if msg["respuesta"] == "No es posible entrar con el usuario ingresado.":
             input("No se ha podido iniciar sesión.")
@@ -135,7 +126,6 @@ def menuLI():
         else:
             global sesion
             sesion=msg["respuesta"]
-            print(sesion)
             if sesion["rol"] == 2:
                 menuGD()
             else:

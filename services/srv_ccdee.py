@@ -7,38 +7,32 @@ srv = 'ccdee'
 def eliE(opcion, rgtr):
     crsr = dbuci.cursor()
     fetched = None
-    print(rgtr)
     if opcion == 1:
         crsr.execute("DELETE FROM pasillo WHERE id_pasillo = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"El pasillo ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 2:
-        print(rgtr)
         crsr.execute("DELETE FROM sala WHERE id_sala = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"La pieza ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 3:
-        print(rgtr)
         crsr.execute("DELETE FROM personalLimpieza WHERE RUT = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"El empleado de limpieza ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 4:
-        print(rgtr)
         crsr.execute("DELETE FROM paciente WHERE RUT = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"El paciente ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 5:
-        print(rgtr)
         crsr.execute("DELETE FROM personalMedico WHERE RUT = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"El medico ha sido eliminado exitosamente."}
         sendT(sckt, srv, json.dumps(response))
     elif opcion == 6:
-        print(rgtr)
         crsr.execute("DELETE FROM equipoMedico WHERE id_equipoMedico = %s", (rgtr,))
         dbuci.commit()
         response = {"respuesta":"La herramienta medica ha sido eliminada exitosamente."}
@@ -61,7 +55,6 @@ if __name__ == "__main__":
         nS, mT = listenB(sckt)
         if nS == srv:
             mTloads = json.loads(mT)
-            print(mTloads["opcion"])
             if mTloads["opcion"] == 1:
                 eliE(opcion = mTloads["opcion"], rgtr = mTloads["id_pasillo"])
             elif mTloads["opcion"] == 2:

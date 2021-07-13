@@ -7,7 +7,6 @@ srv = 'ccdap'
 def asiP(opcion, rgtr):
     crsr = dbuci.cursor()
     fetched = None
-    print(rgtr)
     if opcion == 1:
         crsr.execute("SELECT RUT FROM paciente WHERE RUT = %s", (rgtr[1],))
         fetched = crsr.fetchone()
@@ -59,11 +58,9 @@ if __name__ == "__main__":
 
     while True:
         nS, mT = listenB(sckt)
-        print(mT)
         if nS == srv:
             l = []
             mTloads = json.loads(mT)
-            print(mTloads["opcion"])
             if mTloads["opcion"] == 1:
                 l.append(mTloads["id_equipoMedico"])
                 l.append(mTloads["u_paciente_RUT"])

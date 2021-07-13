@@ -79,13 +79,9 @@ def menuSU():
     yn = input(menuYN)
     if yn == 'y':
         arg = {"username": username, "password": password, "rol": "1"}
-        print(arg)
         sendT(sckt, rgtr, json.dumps(arg))
         nS, msgT = listenB(sckt)
-        print(msgT)
         msg = json.loads(msgT[12:])
-        print(nS)
-        print(msgT)
         if nS == rgtr:
             if msg["respuesta"]:
                 print(msg["respuesta"])
@@ -123,12 +119,9 @@ def menuLI():
 
     arg = {"username": username, "password": password, "rol": 1}
     #arg = {"username": username, "password": password, "rol": rol}
-    print(arg)
     sendT(sckt, lgin, json.dumps(arg))
     nS, msgT=listenB(sckt)
-    print(msgT)
     msg = json.loads(msgT[12:])
-    print(msg)
     if nS == lgin:
         if msg["respuesta"] == "No es posible entrar con el usuario ingresado.":
             input("No se ha podido iniciar sesión.")
@@ -136,7 +129,6 @@ def menuLI():
         else:
             global sesion
             sesion=msg["respuesta"]
-            print(sesion)
             if sesion["rol"] == 1:
                 # Menu cliente
                 #print("menuCliente()")

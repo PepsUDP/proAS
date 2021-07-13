@@ -47,12 +47,10 @@ def getData(opcion):
             mydict.add(row[0],({"u_paciente_RUT":row[1],"tipo":row[2],"fechaInicio":str(row[3]),"tiempoUso":row[4],"estado":row[5]}))
     if fetched:
         response = json.dumps(mydict, indent=2, sort_keys=True)
-        #test = '{' + response[1:-1] + '}'
-        #print(test)
-        #response = {"respuesta":fetched}
         sendT(sckt, srv, response)
     else:
-        print("No sacó nada")
+        response = {"respuesta":"Error al consultar datos."}
+        sendT(sckt, srv, response)
 
 if __name__ == "__main__":
     try:
